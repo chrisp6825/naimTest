@@ -45,7 +45,11 @@ public class Room {
 	}
 	
 	public TiledMapTileLayer getTmtLayer(int n) {
-		return (TiledMapTileLayer)this.getMap().getLayers().get(n);
+		if (this.getMap().getLayers().get(n) instanceof com.badlogic.gdx.maps.tiled.TiledMapTileLayer)
+			return (TiledMapTileLayer)this.getMap().getLayers().get(n);
+		else
+			System.out.println("layer is likely an object layer");
+		return null;
 	}
 	public TiledMapTileLayer getTmtLayer(String s) {
 		return (TiledMapTileLayer)this.getMap().getLayers().get(s);

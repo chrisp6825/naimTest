@@ -4,8 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
+import com.badlogic.gdx.utils.Array;
 import com.chrisp6825.naim.GameClass;
 import com.chrisp6825.naim.controllers.PlayerController;
 import com.chrisp6825.naim.controllers.RoomController;
@@ -29,6 +33,8 @@ public class OverWorld implements Screen {
 	private SpriteBatch spriteBatch;
 	private BitmapFont font = new BitmapFont();
 	private OrthographicCamera camera;
+	
+	private Array<StaticTiledMapTile> grassFrameTiles;
 
 	public OverWorld(GameClass gameClass) {
 		this.game = gameClass;
@@ -44,7 +50,7 @@ public class OverWorld implements Screen {
 			
 		}
 		if (OverWorldKeys.isPressed(OverWorldKeys.A)) {
-			
+			roomController.triggerCell((int)player.getCurCell().x, (int)player.getCurCell().y);
 		}
 		
 		roomController.update(delta);
@@ -77,6 +83,7 @@ public class OverWorld implements Screen {
 
 		roomController = new RoomController(this);
 		playerController = new PlayerController(this);
+		this.player = playerController.getPlayer();
 		
 		roomRenderer = new RoomRenderer(this);
 		playerRenderer = new PlayerRenderer(this);
@@ -84,6 +91,7 @@ public class OverWorld implements Screen {
 //		spriteBatch = roomRenderer.getRenderer().getSpriteBatch();
 		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera();
+		
 	}
 
 	@Override

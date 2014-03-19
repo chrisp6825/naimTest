@@ -84,11 +84,11 @@ public class RoomRenderer {
 		
 		
 		// tweaked for grass over player
-		if (curRoom.getTmtLayer(1).getCell((int)player.getNextCell().x, (int)player.getNextCell().y) != null) {
-			if (curRoom.getTmtLayer(1).getCell((int)player.getNextCell().x, (int)player.getNextCell().y).getTile().getProperties().containsKey("animation")) {
-				if (curRoom.getTmtLayer(1).getCell((int)player.getNextCell().x, (int)player.getNextCell().y).getTile().getProperties().get("animation", String.class).equals("grass")) {
-					if (((TriggeredTiledMapTile) curRoom.getTmtLayer(1).getCell((int)player.getNextCell().x, (int)player.getNextCell().y).getTile()).isPlaying()) {
-						renderer.getSpriteBatch().draw(curRoom.getTmtLayer(1)
+		if (curRoom.getTmtLayer("grass").getCell((int)player.getNextCell().x, (int)player.getNextCell().y) != null) {
+			if (curRoom.getTmtLayer("grass").getCell((int)player.getNextCell().x, (int)player.getNextCell().y).getTile().getProperties().containsKey("animation")) {
+				if (curRoom.getTmtLayer("grass").getCell((int)player.getNextCell().x, (int)player.getNextCell().y).getTile().getProperties().get("animation", String.class).equals("grass")) {
+					if (((TriggeredTiledMapTile) curRoom.getTmtLayer("grass").getCell((int)player.getNextCell().x, (int)player.getNextCell().y).getTile()).isPlaying()) {
+						renderer.getSpriteBatch().draw(curRoom.getTmtLayer("grass")
 								.getCell((int)player.getNextCell().x, (int)player.getNextCell().y).getTile()
 								.getTextureRegion(), player.getNextCell().x*16, player.getNextCell().y*16);
 					}

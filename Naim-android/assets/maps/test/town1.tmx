@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="50" orientation="orthogonal" tileheight="16" tilewidth="16" version="1.0" width="50"><properties><property name="blended tiles" value="181,182,184,211,212,214,218,220,241,242,243,244,248,250,271,272,273,274,278,279,280,316,317,318,319,320,321,322,461,462,463,464,465,521,551,661"/></properties>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<map height="50" orientation="orthogonal" tileheight="16" tilewidth="16" version="1.0" width="50">
+<properties>
+<property name ="atlas" value="town1 packfile"/>
+ <property name="blended tiles" value="181,182,184,211,212,214,218,220,241,242,243,244,248,250,271,272,273,274,278,279,280,316,317,318,319,320,321,322,461,462,463,464,465,521,551,661"/>
+</properties>
  <tileset firstgid="1" margin="1" name="town1" spacing="1" tileheight="16" tilewidth="16">
-  <image height="512" source="town1.png" width="512"/>
+  <image source="town11.png" height="512" width="512"/>
  </tileset>
  <layer height="50" name="ground" width="50">
   <data encoding="base64">

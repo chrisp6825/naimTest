@@ -1,8 +1,8 @@
 package com.chrisp6825.naim.controllers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.chrisp6825.naim.LocalFileHandleResolver;
 import com.chrisp6825.naim.models.Room;
@@ -21,7 +21,6 @@ public class RoomController {
 		loadDemoRoom();
 //		loadExternalRoom();
 		
-		
 		specialTileController = new SpecialTileController(overWorld);
 		specialTileController.newRoom(curRoom);
 	}
@@ -31,9 +30,8 @@ public class RoomController {
 	}
 
 	public void loadDemoRoom() {
-		curRoom.setMap(new TmxMapLoader().load("maps/town1/town1.tmx"));
-//		curRoom.setMap(new AtlasTmxMapLoader().load("maps/test/town1.tmx"));
-		
+//		curRoom.setMap(new TmxMapLoader().load("maps/town1-spaceTest/town1.tmx"));
+		curRoom.setMap(new AtlasTmxMapLoader().load("maps/town1-tiledpacker2/town1.tmx"));
 		
 	}
 	
@@ -76,14 +74,14 @@ public class RoomController {
 	}
 
 	public void triggerCell(int x, int y) {
-		if (getCurRoom().getTmtLayer(1).getCell(x,y) != null && getCurRoom().getTmtLayer(1).getCell(x,y).getTile().getClass().equals(TriggeredTiledMapTile.class)) {
-			((TriggeredTiledMapTile) getCurRoom().getTmtLayer(1).getCell(x,y).getTile()).trigger();
+		if (getCurRoom().getTmtLayer("grass").getCell(x,y) != null && getCurRoom().getTmtLayer("grass").getCell(x,y).getTile().getClass().equals(TriggeredTiledMapTile.class)) {
+			((TriggeredTiledMapTile) getCurRoom().getTmtLayer("grass").getCell(x,y).getTile()).trigger();
 		}
 	}
 
 	public void untriggerCell(int x, int y) {
-		if (getCurRoom().getTmtLayer(1).getCell(x,y) != null && getCurRoom().getTmtLayer(1).getCell(x,y).getTile().getClass().equals(TriggeredTiledMapTile.class))
-			((TriggeredTiledMapTile) getCurRoom().getTmtLayer(1).getCell(x,y).getTile()).reset();
+		if (getCurRoom().getTmtLayer("grass").getCell(x,y) != null && getCurRoom().getTmtLayer("grass").getCell(x,y).getTile().getClass().equals(TriggeredTiledMapTile.class))
+			((TriggeredTiledMapTile) getCurRoom().getTmtLayer("grass").getCell(x,y).getTile()).reset();
 	}
 
 }
