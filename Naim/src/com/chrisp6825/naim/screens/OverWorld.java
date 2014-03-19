@@ -4,27 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
-import com.badlogic.gdx.utils.Array;
 import com.chrisp6825.naim.GameClass;
 import com.chrisp6825.naim.controllers.PlayerController;
 import com.chrisp6825.naim.controllers.RoomController;
 import com.chrisp6825.naim.inputManagers.OverWorldInputProcessor;
 import com.chrisp6825.naim.inputManagers.OverWorldKeys;
-import com.chrisp6825.naim.models.Player;
-import com.chrisp6825.naim.models.Room;
 import com.chrisp6825.naim.renderers.PlayerRenderer;
 import com.chrisp6825.naim.renderers.RoomRenderer;
 
 public class OverWorld implements Screen {
 	
 	private GameClass game;
-	private Player player;
-	private Room room;
 	private RoomRenderer roomRenderer;
 	private RoomController roomController;
 	private PlayerController playerController;
@@ -34,8 +26,6 @@ public class OverWorld implements Screen {
 	private BitmapFont font = new BitmapFont();
 	private OrthographicCamera camera;
 	
-	private Array<StaticTiledMapTile> grassFrameTiles;
-
 	public OverWorld(GameClass gameClass) {
 		this.game = gameClass;
 	}
@@ -47,10 +37,8 @@ public class OverWorld implements Screen {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		if (OverWorldKeys.isPressed(OverWorldKeys.B)) {
-			
 		}
 		if (OverWorldKeys.isPressed(OverWorldKeys.A)) {
-			roomController.triggerCell((int)player.getCurCell().x, (int)player.getCurCell().y);
 		}
 		
 		roomController.update(delta);
@@ -61,15 +49,13 @@ public class OverWorld implements Screen {
 		spriteBatch.setProjectionMatrix(roomRenderer.getCamera().combined);
 		spriteBatch.begin();
 		playerRenderer.render(delta);
-		//render NPCs
-		
+		//TODO render NPCs
 		
 		// print FPS on screen
 		spriteBatch.setProjectionMatrix(camera.combined);
 		font.draw(spriteBatch, "FPS : " + Gdx.graphics.getFramesPerSecond(), 5f, 320f);
 		spriteBatch.end();
 		
-		spriteBatch.setProjectionMatrix(roomRenderer.getCamera().combined);
 		roomRenderer.renderOverPersons(delta);
 		
 		OverWorldKeys.update();
@@ -79,11 +65,9 @@ public class OverWorld implements Screen {
 	public void show() {
 		
 		Gdx.input.setInputProcessor(new OverWorldInputProcessor(this));
-		//spriteBatch = new SpriteBatch();
 
 		roomController = new RoomController(this);
 		playerController = new PlayerController(this);
-		this.player = playerController.getPlayer();
 		
 		roomRenderer = new RoomRenderer(this);
 		playerRenderer = new PlayerRenderer(this);
