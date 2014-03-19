@@ -36,7 +36,7 @@ public class Room {
 
 	public Vector2 getSize() {
 		//return size;
-		return new Vector2(((TiledMapTileLayer)map.getLayers().get(0)).getWidth(),((TiledMapTileLayer)map.getLayers().get(0)).getHeight());
+		return new Vector2(getTmtLayer(0).getWidth(),getTmtLayer(0).getHeight());
 	}
 
 

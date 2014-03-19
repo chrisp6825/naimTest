@@ -2,7 +2,6 @@ package com.chrisp6825.naim.controllers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
-import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.chrisp6825.naim.LocalFileHandleResolver;
 import com.chrisp6825.naim.models.Room;
@@ -36,8 +35,6 @@ public class RoomController {
 	}
 	
 	public void loadExternalRoom() {
-		//FileHandle file = Gdx.files.local("myfile.txt");
-		//file.writeString("My god, it's full of stars", false);
 		if (Gdx.files.local("town0.tmx").exists())
 			curRoom.setMap(new TmxMapLoader(new LocalFileHandleResolver()).load("town0.tmx"));
 		else
